@@ -1,0 +1,3 @@
+Enhanced whitelist plugins for bukkit minecraft servers.
+
+There are two features implemented now: you can set the location of the whitelist file and the message that appears when a non-whitelisted player tries to join the server.
