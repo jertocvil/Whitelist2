@@ -1,12 +1,9 @@
 package es.jertocvil.whitelist2;
-// commit test 1
 import java.io.File;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,8 +28,8 @@ public class Whitelist2 extends JavaPlugin {
         f = new File(config.getString("user_denied.file"));
         if (f.exists()) {
             PluginManager pm = getServer().getPluginManager();
-            pm.registerEvent(Event.Type.PLAYER_LOGIN, this.playerListener, Event.Priority.Normal, this);
-            pm.registerEvent(Event.Type.PLAYER_CHAT, this.playerListener, Event.Priority.Normal, this);
+ //           pm.registerEvent(Event.Type.PLAYER_LOGIN, this.playerListener, Event.Priority.Normal, this);
+            pm.registerEvents(playerListener, this);
             Whitelist2.logger.log(Level.INFO, "Whitelist2 enabled");
         } else {
             Whitelist2.logger.log(Level.WARNING, "Whitelist file not found.");

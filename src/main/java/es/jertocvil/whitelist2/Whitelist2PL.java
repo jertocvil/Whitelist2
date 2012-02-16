@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerListener;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
-public class Whitelist2PL extends PlayerListener {
+public class Whitelist2PL implements Listener {
 
     public static Whitelist2 plugin;
 
@@ -16,7 +18,7 @@ public class Whitelist2PL extends PlayerListener {
         plugin = instance;
     }
 
-    @Override
+    @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event) {
         if (!playerRegistered(event.getPlayer())) {
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, Whitelist2.config.getString("user_denied.message"));
